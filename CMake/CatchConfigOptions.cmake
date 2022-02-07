@@ -69,5 +69,10 @@ foreach(OptionName ${_OtherConfigOptions})
   AddConfigOption(${OptionName})
 endforeach()
 
-set(CATCH_CONFIG_DEFAULT_REPORTER "console" CACHE STRING "Read docs/configuration.md for details. Must form a valid string literal (be passed with quotes)")
+set(CATCH_CONFIG_DEFAULT_REPORTER "console" CACHE STRING "Read docs/configuration.md for details. The name of the reporter should be without quotes.")
 set(CATCH_CONFIG_CONSOLE_WIDTH "80" CACHE STRING "Read docs/configuration.md for details. Must form a valid integer literal.")
+
+# There is no good way to both turn this into a CMake cache variable,
+# and keep reasonable default semantics inside the project. Thus we do
+# not define it and users have to provide it as an outside variable.
+#set(CATCH_CONFIG_FALLBACK_STRINGIFIER "" CACHE STRING "Read docs/configuration.md for details.")
