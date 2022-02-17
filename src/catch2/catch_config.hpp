@@ -9,7 +9,6 @@
 #define CATCH_CONFIG_HPP_INCLUDED
 
 #include <catch2/catch_test_spec.hpp>
-#include <catch2/catch_user_config.hpp>
 #include <catch2/interfaces/catch_interfaces_config.hpp>
 #include <catch2/internal/catch_unique_ptr.hpp>
 #include <catch2/internal/catch_optional.hpp>
@@ -72,15 +71,7 @@ namespace Catch {
         std::string defaultOutputFilename;
         std::string name;
         std::string processName;
-#ifndef CATCH_CONFIG_DEFAULT_REPORTER
-#define CATCH_CONFIG_DEFAULT_REPORTER "console"
-#endif
-        std::vector<ReporterAndFile> reporterSpecifications = {
-            {CATCH_CONFIG_DEFAULT_REPORTER, {}}
-        };
-        // Internal: used as parser state
-        bool _nonDefaultReporterSpecifications = false;
-#undef CATCH_CONFIG_DEFAULT_REPORTER
+        std::vector<ReporterAndFile> reporterSpecifications;
 
         std::vector<std::string> testsOrTags;
         std::vector<std::string> sectionsToRun;
